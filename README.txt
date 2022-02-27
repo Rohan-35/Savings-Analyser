@@ -1,3 +1,4 @@
+
 Savings Analyser - Helping you to save.
 
 {This is a simple Machine Learning system which might be used to properly and quickly analyse our expense trends.}
@@ -8,10 +9,11 @@ TABLE OF CONTENTS:
 - How to setup and connect Google service account.
 - Basic working of the model.
 - Creating a sophesticated Dashboard in Google data studio.
+- Tips and Tricks to better handle this system of apps.
 
 
 -> Purpose of the Project:
-The purpose of this small project was to make use of python to create a simple and quick report of our daily expenses without making much effort on updating and maintaining of a records file for saving those expense history.
+The purpose of this small project was to make use of python to create a simple and quick report of our daily expenses without making much effort on updating and maintaining of a records file for saving those expense history. I am making this explaination as simple as possible so that everyone can understand and make use of this wonderful programming language, python.
 
 This project will enable users to easily enter expenses into the records file which will be stored in thier Google drive as GSheets. Users won't have to even enter expense categories each time, instead they just have to enter keywords pointing to that category. Here's where the Machine Learning comes into play.
 
@@ -59,7 +61,7 @@ This will download our required JSON file which is required for our Python code 
 -> Basic working of the model:
 Basic architecture of this model is very easy.
 Each time user enters the expense keyword with a value, it tries to match the keyword with our keyword spreadsheet, if it finds it new, it will ask for its Category name to which it best points to.
-After this, it will ask for 'Frequency of the input', so it is basically asking for no. of days this expence has to be entered. This concept I have introduced because sometimes I forget to enter my expense into this system and I remember it in next day. In such case, If I put no. of days = 2, this model will automatically divide the expenses into 2 days and hence, in the records file you will see 2 days which got entered, in which the expense values also gets divided into 2.
+After this, it will ask for 'Frequency of the input', so it is basically asking for no. of days this expence has to be entered. This concept I have introduced this to make it more flexible to update whenever we get time even after few days. In such case, If I put no. of days = 2, this model will automatically divide the expenses into 2 days and hence, in the records file you will see 2 days which got entered, in which the expense values also gets divided into 2.
 
 The records are added in the records file are in form of series of 0s under categories we have not expended and values only under the categories entered for the day.
 
@@ -86,3 +88,23 @@ So, Now usually we have to create a entire new Dashboard by yourself, but there 
 - Select the records sheets file from the 'New Data source' drop down.
 
 This dashboard was designed by me, you are free to experiment with your own designs and some more representations.
+
+
+-> Tips and Tricks:
+It can be overwhelming for non technical people to handle complex system of apps like the one I have created. For this, I hereby present you some tricks by which the user can run this file from any device and daily update the records in matter of few seconds.
+
+1) For cross device usage-
+For this, we need to create a new google colab file from your google drive page. Then paste every cell of our .ipynb file into this. 
+After doing this, we can access the Google drive straight from colab itself. From clicking on Files icon on the left, there is a option to connect to drive. After this, just upload the .json file to drive.
+From colab, browse your drive files and look for the .json file (if in case it is not visible, refresh the drive), click on the 3 dots and copy the location of .json file.
+Paste this location in the code where it asks for json location.
+
+The above process connects the code to our json file so that we don't have to run it on our local system, and also if running on cloud we don't have to upload it again and again. We can run Google colab from pc and from mobile devices, just bookmark the url your colab and you should be good to go.
+
+2) For Easy access to colab and Dashboard-
+Whether you prefer mobile or pc for runing this project, I prefer creating a couple of webapps for easy access to those files. Create a webapp for your Google colab file and another for your Dashboard file in Google data studio.
+
+3) Effective management of daily data-
+So, it is sometimes not possible for users to update the expenses on the spot. What I do is, keep the notification of the amount deducted and whenever I get some time, I note it in my local notes app. At the end of the day, I just need to paste this into the code for updation.
+
+In case of updating for multiple days, we can follow this same process as our model will aggregate those keywords based on the corresponding categories and ask for no. of days data needs to be updated.
